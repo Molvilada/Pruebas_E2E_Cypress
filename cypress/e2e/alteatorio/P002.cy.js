@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import PostSection from "../support/elements/postsSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import PostSection from "../../support/elements/postsSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const postSection = new PostSection();
 const adminMenu = new AdminMenu();

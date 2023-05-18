@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 
-import TagSection from "../support/elements/tagSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import TagSection from "../../support/elements/tagSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const tagSection = new TagSection();
 const adminMenu = new AdminMenu();
@@ -27,9 +27,9 @@ describe("Edición de titulo en tag y validación de la Edición del tag.", () =
     const title = faker.lorem.lines(1);
     const slug = faker.internet.url();
     const content = faker.lorem.paragraphs(1);
-    
+
     //Crea Tag a Editar
-    tagSection.createTag(title, slug , content);
+    tagSection.createTag(title, slug, content);
 
     // Publica el tag
     tagSection.saveTag.click();

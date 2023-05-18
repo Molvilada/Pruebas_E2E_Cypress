@@ -1,6 +1,6 @@
-import StaffSection from "../support/elements/staffSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import StaffSection from "../../support/elements/staffSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const staffSection = new StaffSection();
 const adminMenu = new AdminMenu();
@@ -35,13 +35,13 @@ describe("Cambiar la contrasenia de un usuario.", () => {
     staffSection.replacePass(password);
     staffSection.changePass.click();
     cy.wait(2000);
-    
-    //Salir de la sesión actual    
+
+    //Salir de la sesión actual
     adminMenu.staffTab.click();
     cy.wait(2000);
-    const baseUrl = Cypress.config("baseUrl");    
-    cy.visit(baseUrl + '#/signout');
-    //cy.visit('http://localhost:2368/ghost/#/signout');    
+    const baseUrl = Cypress.config("baseUrl");
+    cy.visit(baseUrl + "#/signout");
+    //cy.visit('http://localhost:2368/ghost/#/signout');
 
     /* 
     -------------
@@ -51,6 +51,6 @@ describe("Cambiar la contrasenia de un usuario.", () => {
     // Verifica que el cambio de contraseña ha sido correcto
     const userghost = Cypress.env("userghost");
     cy.loginWithCredentials(userghost, password);
-    cy.wait(1000);    
+    cy.wait(1000);
   });
 });

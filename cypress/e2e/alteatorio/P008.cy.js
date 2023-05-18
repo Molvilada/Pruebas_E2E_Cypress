@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 
-import PageSection from "../support/elements/pagesSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import PageSection from "../../support/elements/pagesSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const pageSection = new PageSection();
 const adminMenu = new AdminMenu();
