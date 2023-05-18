@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 
-import TagSection from "../support/elements/tagSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import TagSection from "../../support/elements/tagSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const tagSection = new TagSection();
 const adminMenu = new AdminMenu();
@@ -30,7 +30,7 @@ describe("Creación de un tag y validación de la creación del tag.", () => {
     */
 
     // Información crea la tag
-    const testMockaroo = '/tag_con_titulo_de_192_caracteres.json';
+    const testMockaroo = "/tag_con_titulo_de_192_caracteres.json";
     tagSection.createTagMockaroo(testMockaroo);
     // intenta publicar el tag
     tagSection.saveTag.click();
@@ -39,7 +39,7 @@ describe("Creación de un tag y validación de la creación del tag.", () => {
       THEN
     -------------
     */
-   
+
     // Verifica que aparezca el mensaje de error
     cy.wait(1000);
     tagSection.msgErrorTitle;

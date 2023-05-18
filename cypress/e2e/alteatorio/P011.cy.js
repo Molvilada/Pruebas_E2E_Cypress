@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 
-import TagSection from "../support/elements/tagSection";
-import AdminMenu from "../support/elements/adminMenu";
-import Site from "../support/elements/site";
+import TagSection from "../../support/elements/tagSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import Site from "../../support/elements/site";
 
 const tagSection = new TagSection();
 const adminMenu = new AdminMenu();
@@ -34,7 +34,7 @@ describe("Creación de un tag y validación de la creación del tag.", () => {
     const slug = faker.internet.url();
     const content = faker.lorem.paragraphs(1);
 
-    tagSection.createTag(title, slug , content);
+    tagSection.createTag(title, slug, content);
 
     // Publica el tag
     tagSection.saveTag.click();
@@ -43,7 +43,7 @@ describe("Creación de un tag y validación de la creación del tag.", () => {
       THEN
     -------------
     */
-   
+
     // Verifica que el tag aparezca en el listado de tags
     adminMenu.tagTab.click();
     cy.wait(1000);

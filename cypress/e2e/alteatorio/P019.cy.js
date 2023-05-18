@@ -1,5 +1,5 @@
-import AdminMenu from "../support/elements/adminMenu";
-import DesignSection from "../support/elements/designSection";
+import AdminMenu from "../../support/elements/adminMenu";
+import DesignSection from "../../support/elements/designSection";
 import { faker } from "@faker-js/faker";
 
 const adminMenu = new AdminMenu();

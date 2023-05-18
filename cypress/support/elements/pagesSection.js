@@ -1,3 +1,4 @@
+import { mockarooService } from "../services";
 export default class PageSection {
   get newPageButton() {
     return cy.get("a").contains("New page");
@@ -51,7 +52,8 @@ export default class PageSection {
     return cy
       .get("li.gh-list-row.gh-posts-list-item")
       .filter(`:contains(${title})`)
-      .first();
+      .first()
+      .children(".gh-post-list-featured");
   }
 
   notPageInList(title) {
