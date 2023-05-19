@@ -100,6 +100,18 @@ export default class PostSection {
       this.editorContainerBody.type(content, {parseSpecialCharSequences: false});
     });
   }
+
+  editPostMockaroo(testMockaroo) {
+
+    cy.request(this.urlMockaroo(testMockaroo)).then((response) => {
+      const title = response.body[0].title;
+      const content = response.body[0].content;
+
+      this.editorContainerTitle.type(title, {parseSpecialCharSequences: false});
+      this.editorContainerBody.type(content, {parseSpecialCharSequences: false});
+    });
+  }
+
   buscarError(mensaje) {
     cy.get('.gh-alert-red').contains(mensaje)
   }
