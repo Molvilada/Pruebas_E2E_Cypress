@@ -32,6 +32,14 @@ export default class PageSection {
     return cy.get("button[title='Settings']");
   }
 
+  get getExcerptField() {
+    return cy.get("textarea[name='post-setting-custom-excerpt']");
+  }
+
+  get editorSettingsCloseButton() {
+    return cy.get("button[aria-label='Close']");
+  }
+
   get editorDeletePageButton() {
     return cy.get("button").contains("Delete page");
   }
