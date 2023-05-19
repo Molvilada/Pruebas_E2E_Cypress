@@ -100,5 +100,7 @@ export default class PostSection {
       this.editorContainerBody.type(content, {parseSpecialCharSequences: false});
     });
   }
+  buscarError(mensaje) {
+    cy.get('.gh-alert-red').contains(mensaje)
   }
 }
