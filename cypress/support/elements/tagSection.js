@@ -36,6 +36,11 @@ export default class TagSection {
     return cy.get('span.error p.response').contains("Tag names cannot be longer than 191 characters.");
     }
 
+  get msgErrorTitleEmpty() {
+    this.editorContainerTitle.click();
+    return cy.get('span.error p.response').contains("You must specify a name for the tag.");
+    }
+
   tagInList(title) {
       return cy
         .get("li.gh-list-row.gh-tags-list-item", {force: true})
@@ -122,7 +127,19 @@ export default class TagSection {
     this.editorContainerTitle.click();    
     this.editorContainerSlug.type(slug);    
     this.editorContainerDescription.type(content);
-  }  
+  }
+  
+  createTagMockarooDataTitle(slug , content) {
+    this.newTagButton.click();
+    cy.wait(2000);   
+    this.editorContainerSlug.click();
+    this.editorContainerTitle.click();    
+    this.editorContainerSlug.clear();    
+    this.editorContainerSlug.click();
+    this.editorContainerTitle.click();    
+    this.editorContainerSlug.type(slug);    
+    this.editorContainerDescription.type(content);
+  } 
 
   getDataTagMockaroo(testMockarooData) {
     const tagData = this.dataMockaroo(testMockarooData)[0];

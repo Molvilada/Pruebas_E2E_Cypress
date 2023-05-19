@@ -6,8 +6,8 @@ const tagSection = new TagSection();
 const adminMenu = new AdminMenu();
 const site = new Site();
 
-describe("Crear Tag con 192 carácteres en el titulo.", () => {
-  it("Crear Tag con 192 carácteres en el titulo.", () => {
+describe("Crear Tag con carácteres especiales en el titulo.", () => {
+  it("Crear Tag con carácteres especiales en el titulo.", () => {
     /* 
     -------------
       GIVEN
@@ -47,7 +47,7 @@ describe("Crear Tag con 192 carácteres en el titulo.", () => {
       THEN
     -------------
     */   
-    // Verifica que aparezca el mensaje de error            
+    // Verifica que el tag aparezca en el listado de tags
         adminMenu.tagTab.click();
         cy.url().then(basAeUrl => {
         cy.log(basAeUrl);
