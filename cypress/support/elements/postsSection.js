@@ -7,6 +7,13 @@ export default class PostSection {
     return cy.get("textarea[placeholder='Post Title']");
   }
 
+  get settingsExerpt() {
+    return cy.get("textarea.post-setting-custom-excerpt");
+  }
+  get contentCover() {
+    return cy.get(".content-cover");
+  }
+
   get editorContainerBody() {
     return cy.get("div[data-placeholder='Begin writing your post...']");
   }
