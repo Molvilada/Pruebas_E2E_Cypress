@@ -29,9 +29,18 @@ export default class StaffSection {
     get saveChanges() {
         return cy.get('span').contains('Save');
     }
+    get saveRetry(){
+        return cy.get('span').contains('Retry');
+    }
     get verifyChangedRole() {
         return cy.get('#new-user-role')
             .should('contain', 'Contributor');
+    }
+    get nameField() {
+        return cy.get('input[placeholder="Full Name"]');
+    }
+    get blankNameAlert() {
+        return cy.get('p').contains('Please enter a name.');
     }
 
     get editorContainerPass() {
