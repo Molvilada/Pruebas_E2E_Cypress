@@ -4,14 +4,14 @@ import PostSection from "../../support/elements/postsSection";
 import AdminMenu from "../../support/elements/adminMenu";
 import Site from "../../support/elements/site";
 import {generateRandomNum} from "../../support/utilities";
-import jsonData from "../a_priori/data/P068.json";
+import jsonData from "./data/P067.json";
 
 const postSection = new PostSection();
 const adminMenu = new AdminMenu();
 const site = new Site();
 
-describe("Edición únicamente del título de un post con 256 caracteres normales.", () => {
-  it("Edición únicamente del título de un post con 256 caracteres normales.", () => {
+describe("Edición únicamente del título de un post con 255 caracteres normales.", () => {
+  it("Edición únicamente del título de un post con 255 caracteres normales.", () => {
     /* 
     -------------
       GIVEN
@@ -57,7 +57,16 @@ describe("Edición únicamente del título de un post con 256 caracteres normale
       THEN
     -------------
     */
-    // Verifica que el mensaje de error esté visible
-    postSection.buscarError("Title cannot be longer than 255 characters");
+    // Verifica que el post aparezca en la lista de posts
+    postSection.goBackToPostsSection.click();
+    postSection.postInList(newTitle).click();
+
+    // Verifica que el post aparezca visible en el sitio
+    postSection.editorSettingsButton.click();
+    postSection.editorViewPost.invoke("attr", "href").then((href) => {
+      cy.visit(href);
+    });
+    cy.wait(1000);
+    site.postTitle.contains(newTitle);
   });
 });

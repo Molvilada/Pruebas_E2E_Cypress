@@ -4,7 +4,7 @@ import PostSection from "../../support/elements/postsSection";
 import AdminMenu from "../../support/elements/adminMenu";
 import Site from "../../support/elements/site";
 import {generateRandomNum} from "../../support/utilities";
-import jsonData from "../a_priori/data/P067.json";
+import jsonData from "./data/P067.json";
 
 const postSection = new PostSection();
 const adminMenu = new AdminMenu();
