@@ -72,7 +72,11 @@ export default class PageSection {
   createPage(title, content) {
     this.newPageButton.click();
     cy.wait(1000);
-    this.editorContainerTitle.type(title);
-    this.editorContainerBody.type(content);
+    if (title) {
+      this.editorContainerTitle.type(title);
+    }
+    if (content) {
+      this.editorContainerBody.type(content);
+    }
   }
 }
