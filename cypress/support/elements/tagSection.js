@@ -27,6 +27,10 @@ export default class TagSection {
     return cy.get("button").contains("Delete tag");
   }
 
+  get editorRetryTagButton() {
+    return cy.get("button").contains("Retry");
+  }
+
   get modalDeleteButton() {
     return cy.get('.modal-content button.gh-btn-red', {force : true})
   }

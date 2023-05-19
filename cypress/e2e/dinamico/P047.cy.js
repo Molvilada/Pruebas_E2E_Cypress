@@ -6,8 +6,8 @@ const tagSection = new TagSection();
 const adminMenu = new AdminMenu();
 const site = new Site();
 
-describe("Crear Tag con 192 carácteres en el titulo.", () => {
-  it("Crear Tag con 192 carácteres en el titulo.", () => {
+describe("Crear Tag con 192 carácteres en el Slug.", () => {
+  it("Crear Tag con 192 carácteres en el Slug.", () => {
     /* 
     -------------
       GIVEN
@@ -28,14 +28,15 @@ describe("Crear Tag con 192 carácteres en el titulo.", () => {
     */
 
     // Información crea la tag
-    const testMockaroo = '/p043.json';
+    const testMockaroo = '/p047.json';
 
     tagSection.getDinamicTagMockaroo(testMockaroo).then((tagData) => {
       const title = tagData.title;
       const slug = tagData.slug;
       const description = tagData.description;
-
-      tagSection.createTag(title, slug, description);      
+            
+      tagSection.createTagMockarooData(title, slug, description);
+      
       tagSection.saveTag.click();
       /* 
       -------------
@@ -44,10 +45,10 @@ describe("Crear Tag con 192 carácteres en el titulo.", () => {
       */   
       // Verifica que aparezca el mensaje de error
       cy.wait(1000);
-      tagSection.msgErrorTitle;
+      tagSection.editorRetryTagButton;
       cy.wait(2000);
     });
     
-
+   
   });
 });
