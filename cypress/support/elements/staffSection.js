@@ -33,6 +33,9 @@ export default class StaffSection {
         return cy.get('#new-user-role')
             .should('contain', 'Contributor');
     }
+    get nameField() {
+        return cy.get('input[placeholder="Full Name"]');
+    }
 
     get editorContainerPass() {
         return cy.get('#user-password-new');
