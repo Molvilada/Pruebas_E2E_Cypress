@@ -51,7 +51,13 @@ export default class PostSection {
     return cy
       .get("li.gh-list-row.gh-posts-list-item")
       .filter(`:contains(${title})`)
-      .first();
+      .first().children('.gh-post-list-featured');
+  }
+
+  postsInList(title) {
+    return cy
+        .get("li.gh-list-row.gh-posts-list-item")
+        .filter(`:contains(${title})`);
   }
 
   notPostInList(title) {
