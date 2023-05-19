@@ -1,3 +1,4 @@
+import { mockarooService } from "../services";
 export default class PageSection {
   get newPageButton() {
     return cy.get("a").contains("New page");
@@ -31,6 +32,14 @@ export default class PageSection {
     return cy.get("button[title='Settings']");
   }
 
+  get getExcerptField() {
+    return cy.get("textarea[name='post-setting-custom-excerpt']");
+  }
+
+  get editorSettingsCloseButton() {
+    return cy.get("button[aria-label='Close']");
+  }
+
   get editorDeletePageButton() {
     return cy.get("button").contains("Delete page");
   }
@@ -47,11 +56,20 @@ export default class PageSection {
     return cy.get("a").contains("Pages");
   }
 
+  get errorAlert() {
+    return cy.get(".gh-alert-content");
+  }
+
+  get errorAlertCloseButton() {
+    return cy.get(".gh-alert-close");
+  }
+
   pageInList(title) {
     return cy
       .get("li.gh-list-row.gh-posts-list-item")
       .filter(`:contains(${title})`)
-      .first();
+      .first()
+      .children(".gh-post-list-featured");
   }
 
   notPageInList(title) {
@@ -70,7 +88,13 @@ export default class PageSection {
   createPage(title, content) {
     this.newPageButton.click();
     cy.wait(1000);
-    this.editorContainerTitle.type(title);
-    this.editorContainerBody.type(content);
+    this.editorContainerTitle.click();
+    if (title) {
+      this.editorContainerTitle.type(title);
+    }
+    this.editorContainerBody.click();
+    if (content) {
+      this.editorContainerBody.type(content);
+    }
   }
 }
