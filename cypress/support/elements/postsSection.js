@@ -76,8 +76,10 @@ export default class PostSection {
   createPost(title, content) {
     this.newPostButton.click();
     cy.wait(1000);
-    this.editorContainerTitle.type(title);
-    this.editorContainerBody.type(content);
+    if (title) this.editorContainerTitle.type(title);
+    this.editorContainerBody.click();
+    if (content) this.editorContainerBody.type(content);
+  }
 
   urlMockaroo (testMockaroo)
   {
