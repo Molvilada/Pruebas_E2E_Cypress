@@ -4,8 +4,8 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: "http://localhost:2368/ghost/",
     env: {
-      username: "ld.molina11@uniandes.edu.co",
-      password: "1234567890A.",
+      username: "c.ramirezr2@uniandes.edu.co",
+      password: "contraseña",
       userghost: "ghost-author@example.com",
     },
     setupNodeEvents(on, config) {

@@ -38,11 +38,18 @@ export default class TagSection {
 
   tagInList(title) {
       return cy
-        .get("li.gh-list-row.gh-tags-list-item")
+        .get("li.gh-list-row.gh-tags-list-item", {force: true})
         .filter(`:contains(${title})`)
         .first();
     }
 
+    tagInListLong(title) {
+      return cy
+        .get("a.ember-view.gh-list-data.middarkgrey.f8.gh-tag-list-slug.gh-list-cellwidth-10 span", {force: true})
+        .filter(`:contains(${title})`)
+        .first();
+    }
+    
   createTag(title, slug , content) {
     this.newTagButton.click();
     cy.wait(1000);
@@ -62,7 +69,7 @@ export default class TagSection {
     return (URL)
   }
 
-  createTagMockaroo(testMockaroo) {
+  /*createTagMockaroo(testMockaroo) {
     this.newTagButton.click();
     cy.wait(1000);      
     
@@ -76,7 +83,49 @@ export default class TagSection {
     this.editorContainerDescription.type(description);
     });
   }
+  */
+
+  getDinamicTagMockaroo(testMockaroo) { 
+    return cy.request(this.urlMockaroo(testMockaroo)).then((response) => {
+      const title = response.body[0].title;
+      const slug = response.body[0].slug;
+      const description = response.body[0].Description;
+  
+      return {
+        title,
+        slug,
+        description
+      };
+    });
+  }
+
+  dataMockaroo (testMockarooData)
+  { 
+    const dataPrueba = require(`../../e2e/a_priori/data/${testMockarooData}`)
+    return (dataPrueba)
+  }
+
+  tagInListMockaroo(testMockarooData) {
+     return this.dataMockaroo(testMockarooData)[0].title; 
+    }
+
+
+  createTagMockarooData(title, slug , content) {
+    this.newTagButton.click();
+    this.editorContainerTitle.type(title);    
+    this.editorContainerSlug.click();
+    this.editorContainerTitle.click();    
+    this.editorContainerSlug.clear();    
+    this.editorContainerSlug.click();
+    this.editorContainerTitle.click();    
+    this.editorContainerSlug.type(slug);    
+    this.editorContainerDescription.type(content);
+  }  
+
+  getDataTagMockaroo(testMockarooData) {
+    const tagData = this.dataMockaroo(testMockarooData)[0];
+    return tagData;
+  }
 
   
 }
-
