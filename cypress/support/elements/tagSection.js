@@ -54,6 +54,7 @@ export default class TagSection {
     this.newTagButton.click();
     cy.wait(1000);
     this.editorContainerTitle.type(title);
+    cy.wait(5000);
     this.editorContainerSlug.type(slug);
     this.editorContainerDescription.type(content);
   }
@@ -112,7 +113,8 @@ export default class TagSection {
 
   createTagMockarooData(title, slug , content) {
     this.newTagButton.click();
-    this.editorContainerTitle.type(title);    
+    this.editorContainerTitle.type(title); 
+    cy.wait(2000);   
     this.editorContainerSlug.click();
     this.editorContainerTitle.click();    
     this.editorContainerSlug.clear();    
