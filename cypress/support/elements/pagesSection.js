@@ -48,6 +48,14 @@ export default class PageSection {
     return cy.get("a").contains("Pages");
   }
 
+  get errorAlert() {
+    return cy.get(".gh-alert-content");
+  }
+
+  get errorAlertCloseButton() {
+    return cy.get(".gh-alert-close");
+  }
+
   pageInList(title) {
     return cy
       .get("li.gh-list-row.gh-posts-list-item")
