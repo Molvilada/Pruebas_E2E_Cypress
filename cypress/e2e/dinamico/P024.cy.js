@@ -1,17 +1,14 @@
-import { faker } from "@faker-js/faker";
-
 import PageSection from "../../support/elements/pagesSection";
 import AdminMenu from "../../support/elements/adminMenu";
 import Site from "../../support/elements/site";
-
 import { mockarooService } from "../../support/services";
 
 const pageSection = new PageSection();
 const adminMenu = new AdminMenu();
 const site = new Site();
 
-describe("Publicación de una página nueva con título de 255 caracteres normales.", () => {
-  it("Publicación de una página nueva con título de 255 caracteres normales.", async () => {
+describe("Publicación de una página nueva con cuerpo que tiene caracteres especiales.", () => {
+  it("Publicación de una página nueva con cuerpo que tiene caracteres especiales.", () => {
     /* 
     -------------
       GIVEN
@@ -31,7 +28,7 @@ describe("Publicación de una página nueva con título de 255 caracteres normal
     -------------
     */
 
-    mockarooService("p021").then((res) => {
+    mockarooService("p024").then((res) => {
       const title = res.body.title;
       const body = res.body.body;
       // Crea la página
@@ -40,10 +37,10 @@ describe("Publicación de una página nueva con título de 255 caracteres normal
       pageSection.publishPage();
 
       /* 
-    -------------
-      THEN
-    -------------
-    */
+      -------------
+        THEN
+      -------------
+      */
 
       // Verifica que la página aparezca en la lista de páginas
       pageSection.goBackToPagesSection.click();
@@ -55,7 +52,7 @@ describe("Publicación de una página nueva con título de 255 caracteres normal
         cy.visit(href);
       });
       cy.wait(1000);
-      site.pageTitle.contains(title);
+      site.pageContent.contains(body);
     });
   });
 });

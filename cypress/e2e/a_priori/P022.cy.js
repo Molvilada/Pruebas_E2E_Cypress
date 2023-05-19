@@ -1,15 +1,14 @@
 import PageSection from "../../support/elements/pagesSection";
 import AdminMenu from "../../support/elements/adminMenu";
 import Site from "../../support/elements/site";
-import jsonData from "./data/P023.json";
-import { generateRandomNum } from "../../support/utilities";
+import jsonData from "./data/P022.json";
 
 const pageSection = new PageSection();
 const adminMenu = new AdminMenu();
 const site = new Site();
 
-describe("Publicación de una página nueva con título que tiene caracteres especiales.", () => {
-  it("Publicación de una página nueva con título que tiene caracteres especiales.", async () => {
+describe("Publicación de una página nueva con título de 256 caracteres normales.", () => {
+  it("Publicación de una página nueva con título de 256 caracteres normales.", () => {
     /* 
     -------------
       GIVEN
@@ -29,9 +28,8 @@ describe("Publicación de una página nueva con título que tiene caracteres esp
     -------------
     */
 
-    const randomNum = generateRandomNum(999);
-    const title = jsonData[randomNum].title;
-    const body = jsonData[randomNum].body;
+    const title = jsonData.title;
+    const body = jsonData.body;
     // Crea la página
     pageSection.createPage(title, body);
     // Publica la página
