@@ -78,5 +78,25 @@ export default class PostSection {
     cy.wait(1000);
     this.editorContainerTitle.type(title);
     this.editorContainerBody.type(content);
+
+  urlMockaroo (testMockaroo)
+  {
+    const apiKey = 'e7649c20';
+    const URL = `https://my.api.mockaroo.com/${testMockaroo}?key=${apiKey}`
+    return (URL)
+  }
+
+  createPostMockaroo(testMockaroo) {
+    this.newPostButton.click();
+    cy.wait(1000);
+
+    cy.request(this.urlMockaroo(testMockaroo)).then((response) => {
+      const title = response.body[0].title;
+      const content = response.body[0].content;
+
+      this.editorContainerTitle.type(title, {parseSpecialCharSequences: false});
+      this.editorContainerBody.type(content, {parseSpecialCharSequences: false});
+    });
+  }
   }
 }
